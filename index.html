@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evogen-NIGHT ASSIGNMENT</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            background-image: url(data.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Center text in body */
+        }
+
+        .hd {
+            color: white;
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            margin-bottom: 100px;
+
+        }
+
+        .main {
+            width: 80%;
+            max-width: 1000px;
+            border: 1.3px solid white;
+            border-radius: 12px;
+            color: white;
+            padding: 20px;
+            margin: auto;
+            margin-bottom: 200px;
+            background: linear-gradient(135deg, blue, yellow);
+
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        #question {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="hd">"Night Shift: Data Insights."</h1>
+        <div class="main">
+            <h1 id="question">Decode the following question in a given time period <br>(pls remember your decoded ans)
+            </h1>
+            <hr>
+            <p>Puzzle: "Accuracy: 1.0"</p>
+            <p>Decode</p>
+            <p id="countdown">Time Remaining: 20sec</p>
+            <h2>if you fail to decode the question you automatic redirect to next page</h2>
+        </div>
+    </div>
+
+    <script>
+        function redirect() {
+            window.location.href = "index2.html";
+        }
+
+        let timeRemaining = 2;
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeRemaining / 60);
+            let seconds = timeRemaining % 60;
+
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            document.getElementById('countdown').textContent = `Time Remaining: ${minutes}:${seconds}`;
+
+            timeRemaining--;
+
+            if (timeRemaining < 0) {
+                clearInterval(countdownInterval);
+                redirect();
+            }
+        }
+
+        updateCountdown();
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
